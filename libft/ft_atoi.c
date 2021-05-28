@@ -6,14 +6,16 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 10:13:14 by jestevam          #+#    #+#             */
-/*   Updated: 2021/05/24 23:13:37 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/05/26 21:35:29 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int static	ft_addnum(int *num, char c, int n)
+//function add one place in my var num that is in function ft_atoi
+int static	ft_addnum(int *num, char c)
 {
+	//add one place if my c is number, and return 0 if is true
 	if (c >= '0' && c <= '9')
 	{
 		if (*num != 0)
@@ -21,49 +23,31 @@ int static	ft_addnum(int *num, char c, int n)
 		*num += c - '0';
 		return (0);
 	}
-	if (*num != 0)
-		return (1);
-	if (n > 1)
-		return (1);
-	if (c >= 9 && c <= 13)
-		return (0);
-	if (c == ' ' || c == '-' || c == '+')
-		return (0);
 	return (1);
 }
 
-void static	ft_whichsinal(char c, int *num, int *npos, int *nneg)
-{
-	if (c == '-' && *num == 0)
-		*nneg += 1;
-	else if (c == '+' && *num == 0)
-		*npos += 1;
-}
-
+//trasform a string in number if the string contain numeric charactere
 int	ft_atoi(const char *nptr)
 {
-	int				num;
-	int				count;
-	int				nneg;
-	int				npos;
+	int	sinal;
+	int	num;
 
-	npos = 0;
-	nneg = 0;
-	count = 0;
 	num = 0;
-	while (nptr[count] != '\0')
+	sinal = 1;
+	//my pointer nptr going to next position if the charactere is \n, space, \t, \b, \f and \v
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == ' ')
+		nptr++;
+	//verify if my position contai - or +, simboling a number negative or sinal
+	if (*nptr == '+' || *nptr == '-')
 	{
-		if (ft_isascii(nptr[count]) != 0)
-		{
-			ft_whichsinal(nptr[count], &num, &npos, &nneg);
-			if (ft_addnum(&num, nptr[count], npos + nneg) == 1)
-				break ;
-		}
-		else if (num != 0)
-			break ;
-		count++;
+		//verify if my position is -, if true, my var sinal get -1
+		if (*nptr == '-')
+			sinal = -1;
+		nptr++;
 	}
-	if (nneg == 1)
-		return (num - num - num);
-	return (num);
+	//a while that stay in loop if my refurn of addnum function is 0
+	while (ft_addnum(&num, *nptr) == 0)
+		nptr++;
+	// return my num * sinal (transforming the num in negative if sinal is -1)
+	return (num * sinal);
 }

@@ -6,12 +6,13 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 12:38:30 by jestevam          #+#    #+#             */
-/*   Updated: 2021/05/20 17:17:29 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/05/28 00:41:05 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//create a copy of char c with malloc;
 char	*ft_strdup(const char *s)
 {
 	size_t	size;

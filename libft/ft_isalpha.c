@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+//return a number diferent of 0 if my c is alphabetic
 int	ft_isalpha(int c)
 {
 	if ((unsigned char)c >= 'a' && (unsigned char)c <= 'z')

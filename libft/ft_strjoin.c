@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 16:26:29 by jestevam          #+#    #+#             */
-/*   Updated: 2021/05/20 17:00:50 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/05/28 00:48:29 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//copy string src to my string dest, start copy in position 'start' of my dest
 static void	copyinpos(char *dest, char const *src, size_t start)
 {
 	size_t	pos;
@@ -27,11 +28,12 @@ static void	copyinpos(char *dest, char const *src, size_t start)
 	}
 }
 
+//creates a new string with malloc, concatenating  s1 and s2 in this new string
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*fullstring;
 
-	fullstring = malloc(ft_strlen(s1) + ft_strlen(s2));
+	fullstring = calloc(ft_strlen(s1) + ft_strlen(s2), sizeof(char));
 	if (fullstring == NULL)
 		return (NULL);
 	copyinpos(fullstring, s1, 0);

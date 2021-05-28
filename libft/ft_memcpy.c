@@ -12,16 +12,19 @@
 
 #include "libft.h"
 
+//copy n bytes from my 'from' to my 'to'
 void	*ft_memcpy(void *to, void *from, size_t numBytes)
 {
-	size_t			count;
 	unsigned char	*pto;
 	unsigned char	*pfrom;
 
+	//create pto to 'to' and pfrom to my from with unsigned char type 
+	//to be able to manipulates this two strings
 	pto = (unsigned char *)to;
 	pfrom = (unsigned char *)from;
-	count = 0;
-	while (count++ < numBytes)
+
+	////stay on my loop until my numBytes is diferent of 0
+	while (numBytes--)
 	{
 		*pto = *pfrom;
 		pfrom++;

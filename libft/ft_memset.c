@@ -12,13 +12,17 @@
 
 #include "libft.h"
 
+//population the first n bytes of string ptr with char x
 void	*ft_memset(void *ptr, int x, size_t n)
 {
 	size_t			counter;
 	unsigned char	*p;
 
+	//create a pointer p gets ptr, 
+	//to be able to manipulates this two strings
 	p = (unsigned char *)ptr;
 	counter = 0;
+	//stay on loop until my counter is equal n
 	while (counter < n)
 	{
 		*p = (unsigned char) x;

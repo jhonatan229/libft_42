@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+//compare the first n bytes of two strings (s1, s2)
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned char	*ps1;
@@ -19,14 +20,17 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 	ps1 = (unsigned char *)s1;
 	ps2 = (unsigned char *)s2;
+	//stay on loop until my n is bigger than 0, after this, decrement the n
 	while (n-- > 0)
 	{
+		//verify if my pointer ps1 is diferent of pointer ps2
+		//if true, return the difference between ps1 and ps2
 		if (*ps1 != *ps2)
-		{
 			return (*ps1 - *ps2);
-		}
+		//pass the pointer of ps1, ps2 to the next position
 		ps1++;
 		ps2++;
 	}
+	//if there is no difference, return 0
 	return (0);
 }

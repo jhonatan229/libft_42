@@ -16,22 +16,18 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t			counter;
 	size_t			pnt;
-	unsigned char	*psrc;
 
-	psrc = (unsigned char *)src;
 	counter = 0;
 	pnt = 0;
-	while (dst[counter] != 0)
+	while (dst[counter] != 0 && counter < size)
 		counter++;
-	if (size > counter)
+	while ((counter + pnt + 1) < size && src[pnt] != 0)
 	{
-		while (counter < size - 1 && psrc[pnt] != 0)
-		{
-			dst[counter] = psrc[pnt];
-			counter++;
-			pnt++;
-		}
-		dst[counter] = '\0';
+		dst[counter + pnt] = src[pnt];
+		pnt++;
 	}
-	return (counter);
+	if (counter < size)
+		dst[counter + pnt] = '\0';
+	return (counter + ft_strlen(src));
 }
+
