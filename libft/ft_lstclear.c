@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 10:06:38 by jestevam          #+#    #+#             */
-/*   Updated: 2021/05/28 14:52:47 by jestevam         ###   ########.fr       */
+/*   Created: 2021/06/01 14:28:22 by jestevam          #+#    #+#             */
+/*   Updated: 2021/06/02 13:30:23 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//transform the char 'c' in uppercase if my c is a lower case
-//retur c if is not lower case
-int	ft_toupper(int c)
+#include "libft.h"
+
+//clean the list of t_list
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if ((unsigned char)c >= 'a' && (unsigned char)c <= 'z')
-		return (c - 32);
-	return (c);
+	t_list	*aux;
+
+	while (*lst)
+	{
+		aux = *lst;
+		del(aux->content);
+		*lst = aux->next;
+		free(aux);
+	}
+	*lst = NULL;
 }

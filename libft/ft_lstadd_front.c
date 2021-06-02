@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 10:06:38 by jestevam          #+#    #+#             */
-/*   Updated: 2021/05/28 14:52:47 by jestevam         ###   ########.fr       */
+/*   Created: 2021/06/01 12:27:07 by jestevam          #+#    #+#             */
+/*   Updated: 2021/06/02 13:26:39 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//transform the char 'c' in uppercase if my c is a lower case
-//retur c if is not lower case
-int	ft_toupper(int c)
+#include "libft.h"
+
+//add a new item of t_list in beegin of my list of t_list
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if ((unsigned char)c >= 'a' && (unsigned char)c <= 'z')
-		return (c - 32);
-	return (c);
+	if (new == NULL)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	new->next = *lst;
+	*lst = new;
 }

@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 10:06:38 by jestevam          #+#    #+#             */
-/*   Updated: 2021/05/28 14:52:47 by jestevam         ###   ########.fr       */
+/*   Created: 2021/06/01 12:11:31 by jestevam          #+#    #+#             */
+/*   Updated: 2021/06/02 13:35:32 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//transform the char 'c' in uppercase if my c is a lower case
-//retur c if is not lower case
-int	ft_toupper(int c)
+#include "libft.h"
+
+//create a net item t_list
+t_list	*ft_lstnew(void *content)
 {
-	if ((unsigned char)c >= 'a' && (unsigned char)c <= 'z')
-		return (c - 32);
-	return (c);
+	t_list	*stcr;
+
+	stcr = malloc(sizeof(t_list));
+	if (stcr == NULL)
+		return (NULL);
+	stcr->content = content;
+	stcr->next = NULL;
+	return (stcr);
 }

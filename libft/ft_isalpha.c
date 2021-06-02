@@ -13,9 +13,9 @@
 //return a number diferent of 0 if my c is alphabetic
 int	ft_isalpha(int c)
 {
-	if ((unsigned char)c >= 'a' && (unsigned char)c <= 'z')
+	if ((char)c >= 'a' && (char)c <= 'z')
 		return (2);
-	if ((unsigned char)c >= 'A' && (unsigned char)c <= 'Z')
+	if ((char)c >= 'A' && (char)c <= 'Z')
 		return (2);
 	return (0);
 }

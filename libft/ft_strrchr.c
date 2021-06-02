@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+//return a pointer to the last occurrence of c in my string s
+//return null if not found any occurrence of c
 char	*ft_strrchr(const char *s, int c)
 {
 	int	count;

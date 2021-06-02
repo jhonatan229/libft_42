@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 13:38:48 by jestevam          #+#    #+#             */
-/*   Updated: 2021/05/27 16:29:11 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/02 15:47:51 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	**ft_split(char const *s, char c)
 	char	**pp;
 
 	// allocates size of pointer with the countc function + 1(space of null)
-	pp = malloc((countc(s, c) + 1) * sizeof(char *));
+	pp = ft_calloc((countc(s, c) + 1), sizeof(char *));
 	n = 1;
 	count = 0;
 	//skip the spaces in s that contains char c
@@ -101,7 +101,5 @@ char	**ft_split(char const *s, char c)
 		if (s[count] == 0)
 			break ;
 	}
-	// add null in my last space of pp
-	pp[n] = NULL;
 	return (pp);
 }

@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 14:30:27 by jestevam          #+#    #+#             */
-/*   Updated: 2021/05/27 13:49:33 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/02 13:23:24 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ char	*ft_itoa(int n)
 	count = ft_quantitynum(n);
 	//allocates count + 1(space of \0) space
 	rslt = malloc(count + 1);
+	if (rslt == NULL)
+		return (NULL);
 	//allocates the last space of my rslt to \0
 	rslt[count] = 0;
 	count--;

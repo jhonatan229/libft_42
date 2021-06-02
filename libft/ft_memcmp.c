@@ -23,14 +23,14 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	ps1 = (unsigned char *)s1;
 	ps2 = (unsigned char *)s2;
 	//stay on my loop until my n is diferent of 0
-	while (n--)
+	while (n-- > 0)
 	{
 		//if my char in my position ps1 is bigger than my char in my position ps2, return 1
 		if (*ps1 > *ps2)
-			return (1);
+			return (*ps1 - *ps2);
 		//if my char in my position ps2 is bigger than my char in my position ps1, return -1
 		if (*ps2 > *ps1)
-			return (-1);
+			return (*ps1 - *ps2);
 		ps2++;
 		ps1++;
 	}

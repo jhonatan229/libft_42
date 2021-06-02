@@ -24,25 +24,18 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	//verify if my needle is equals to 0, if true, return a pointer to the beegin of my haystack
 	if (*needle == 0)
 		return ((char *)haystack);
-	//verify if my pointer to haystack(phay) is smaller than 'len' and if my haystack in position phay is different to \0
-	while (phay < len && haystack[phay] != 0)
+	//verify if my haystack in position phay is different to \0
+	while (haystack[phay] != 0)
 	{
-		// safe a backup of my phay (for if i found the needle) 
-		mark = phay;
 		pneed = 0;
-		//verify if my pointer of haystack(phay) is equal to pointer to needle(pneed), and if my needle  not comed to the end
-		//if true, put my pointers to the next position
-		while (haystack[phay] == needle[pneed] && needle[pneed] != 0)
+		while (haystack[phay + pneed] == needle[pneed] && (phay + pneed) < len)
 		{
+			//if the next position of my needle is \0, return a pointer of beegin of my string needle in haystack
+			if (needle[pneed + 1] == 0)
+				return ((char *) haystack + phay);
 			pneed++;
-			phay++;
 		}
-		// if my pointer of the needle made it at the end, and my pointer to haystack is smaller than len
-		//returns a pointer to haystack on position 'mark'(that is my backup of phay)
-		if (needle[pneed] == 0 && phay < len)
-			return ((char *)haystack + mark);
-		//if not true, my phay gets my mark(backup) plus one, and return to while on line 28
-		phay = mark + 1;
+		phay++;
 	}
 	// return null if my needle doesn't found
 	return (NULL);

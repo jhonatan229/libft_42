@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 10:06:38 by jestevam          #+#    #+#             */
-/*   Updated: 2021/05/28 14:52:47 by jestevam         ###   ########.fr       */
+/*   Created: 2021/06/01 12:54:53 by jestevam          #+#    #+#             */
+/*   Updated: 2021/06/02 13:35:55 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//transform the char 'c' in uppercase if my c is a lower case
-//retur c if is not lower case
-int	ft_toupper(int c)
+#include "libft.h"
+
+//count size of my t_list 'lst'
+int	ft_lstsize(t_list *lst)
 {
-	if ((unsigned char)c >= 'a' && (unsigned char)c <= 'z')
-		return (c - 32);
-	return (c);
+	int	count;
+
+	count = 0;
+	while (lst)
+	{
+		count++;
+		lst = lst->next;
+	}
+	return (count);
 }

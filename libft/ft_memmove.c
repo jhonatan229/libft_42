@@ -12,28 +12,26 @@
 
 #include "libft.h"
 
+//move the first n bytes from my 'from' to my 'to'
 void	*ft_memmove(void *to, const void *from, size_t numBytes)
 {
 	char	*pto;
 	char	*pfrom;
-	char	*aux;
-	size_t	count;
 
-	aux = ft_calloc(numBytes, sizeof(char));
-	count = 0;
 	pto = (char *)to;
 	pfrom = (char *)from;
-	while (count < numBytes)
-	{
-		aux[count] = pfrom[count];
-		count++;
-	}
-	count = 0;
-	while (count < numBytes)
-	{
-		pto[count] = aux[count];
-		count++;
-	}
-	free(aux);
+	if (to == NULL && from == NULL)
+		return (NULL);
+	//verify if my two strings is the same string, if true, return a pointer to the begin of my string to
+	if (ft_memcmp(to, from, numBytes) == 0)
+		return (to);
+	//verify if my len of 'to' is smaller than len 'from'
+	//if true, call my memcpy
+	if (to < from)
+		ft_memcpy(pto, pfrom, numBytes);
+	//if not true, copy the n bytes of memory, decrement the 'numBytes' in each loop
+	else
+		while (numBytes--)
+			pto[numBytes] = pfrom[numBytes];
 	return (to);
 }
